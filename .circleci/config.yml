@@ -22,7 +22,7 @@ jobs:
         environment:
           #CIRCLE_JOB: ContainerEnvKey
     environment:
-      CIRCLE_JOB: JobEnvKey
+      #CIRCLE_JOB: JobEnvKey
     steps:
       - checkout
       - run: 
