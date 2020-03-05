@@ -20,7 +20,7 @@ jobs:
         environment:
           MY_ENV_VAR: ContainerEnvKey
     environment:
-      MY_ENV_VAR: JobEnvKey
+      # MY_ENV_VAR: JobEnvKey
     steps:
       - checkout
       - run: 
