@@ -27,4 +27,4 @@ jobs:
             # MY_ENV_VAR="StepCommand"
             echo $MY_ENV_VAR
           environment:
-            MY_ENV_VAR: StepEnvKey
+            # MY_ENV_VAR: StepEnvKey
