@@ -22,7 +22,7 @@ jobs:
         environment:
           MY_ENV_VAR: ContainerEnvKey
     environment:
-      #MY_ENV_VAR: JobEnvKey
+      MY_ENV_VAR: JobEnvKey
     steps:
       - checkout
       - run: 
@@ -31,4 +31,4 @@ jobs:
             #MY_ENV_VAR="StepCommand"
             echo $MY_ENV_VAR
           environment:
-            MY_ENV_VAR: StepEnvKey
+            #MY_ENV_VAR: StepEnvKey
