@@ -29,6 +29,6 @@ jobs:
           name: "Setup custom environment variables"
           command: |
             #MY_ENV_VAR="StepCommand"
-            echo $MY_ENV_VAR
+            echo $CIRCLE_JOB
           environment:
             #MY_ENV_VAR: StepEnvKey
