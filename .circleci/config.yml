@@ -22,7 +22,7 @@ jobs:
       - run: 
           name: "Setup custom environment variables"
           command: |
-            MY_ENV_VAR="StepCommand"
+            # MY_ENV_VAR="StepCommand"
             echo $MY_ENV_VAR
           environment:
             MY_ENV_VAR: StepEnvKey
