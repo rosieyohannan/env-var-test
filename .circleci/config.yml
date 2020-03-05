@@ -20,7 +20,7 @@ jobs:
     docker:
       - image: cimg/base:2020.01
         environment:
-          #MY_ENV_VAR: ContainerEnvKey
+          MY_ENV_VAR: ContainerEnvKey
     environment:
       #MY_ENV_VAR: JobEnvKey
     steps:
