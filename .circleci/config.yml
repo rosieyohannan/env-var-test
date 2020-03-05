@@ -11,7 +11,8 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - welcome/run
-      - env-var
+      - env-var:
+          context: Testing-Env-Vars
           
       
 jobs:
@@ -20,7 +21,6 @@ jobs:
       - image: cimg/base:2020.01
         environment:
           #MY_ENV_VAR: ContainerEnvKey
-    context: Testing-Env-Vars
     environment:
       #MY_ENV_VAR: JobEnvKey
     steps:
