@@ -22,4 +22,5 @@ jobs:
       - run: 
           name: "Setup custom environment variables"
           command: |
-            echo 'export MY_ENV_VAR="FOO"'
+            MY_ENV_VAR="FOO"
+            echo $MY_ENV_VAR
