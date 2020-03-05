@@ -17,12 +17,14 @@ jobs:
   env-var:
     docker:
       - image: cimg/base:2020.01
+    environment:
+      MY_ENV_VAR: JobEnvKey
     steps:
       - checkout
       - run: 
           name: "Setup custom environment variables"
           command: |
-            MY_ENV_VAR="StepCommand"
+            # MY_ENV_VAR="StepCommand"
             echo $MY_ENV_VAR
           environment:
-            MY_ENV_VAR: StepEnvKey
+            # MY_ENV_VAR: StepEnvKey
