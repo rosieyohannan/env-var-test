@@ -11,3 +11,18 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - welcome/run
+      - env-var
+      
+jobs:
+  env-var:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - run: 
+          name: "Setup custom environment variables"
+          command: |
+            MY_ENV_VAR="StepCommand"
+            echo $MY_ENV_VAR
+          environment:
+            MY_ENV_VAR: StepEnvKey
