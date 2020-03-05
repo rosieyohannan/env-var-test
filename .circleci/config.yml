@@ -11,7 +11,7 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - welcome/run
-      - env-var
+      - env-var:
           context: Testing-Env-Vars
           
       
