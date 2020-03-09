@@ -10,3 +10,5 @@
 * Environment variables set with the `environment` key for a container
 
 See https://app.circleci.com/jobs/github/rosieyohannan/env-var-test/74
+
+On branch: https://github.com/rosieyohannan/env-var-test/tree/shell-cmd
