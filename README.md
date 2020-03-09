@@ -52,3 +52,12 @@ You can see that the env var is set in a context and in project settings too:
     See: https://app.circleci.com/pipelines/github/rosieyohannan/env-var-test/59/workflows/821601bc-5167-401f-a636-7ca23a75888a/jobs/103
     
     on branch: https://github.com/rosieyohannan/env-var-test/blob/built-in-env-var/.circleci/config.yml
+    
+ 5. Context env vars override:
+ 
+    * Project-level environment variables
+    * Environment variables set with the `environment` key for a container
+ 
+    See: https://app.circleci.com/jobs/github/rosieyohannan/env-var-test/105
+    
+    on branch: https://github.com/rosieyohannan/env-var-test/blob/context-env-var/.circleci/config.yml
