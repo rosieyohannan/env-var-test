@@ -20,7 +20,7 @@ jobs:
       - run: 
           name: "override and echo built in environment variables"
           command: |
-            CIRCLE_JOB="StepCommand"
+            # CIRCLE_JOB="StepCommand"
             echo $CIRCLE_JOB
           environment:
             CIRCLE_JOB: StepEnvKey
