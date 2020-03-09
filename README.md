@@ -11,7 +11,7 @@ You can see that the env var is set in a context and in project settings too:
 
     * Environment variables declared with the `environment` key for a `run` step
     * Environment variables set with the `environment` key for a job
-    * Special CircleCI environment variables defined in the Built-in Environment Variables
+    * Built-in Environment Variables
     * Context environment variables 
     * Project-level environment variables
     * Environment variables set with the `environment` key for a container
@@ -23,7 +23,7 @@ You can see that the env var is set in a context and in project settings too:
 2. Set env var using `environment` key in a step overrides:
    
     * Environment variables set with the `environment` key for a job
-    * Special CircleCI environment variables defined in the Built-in Environment Variables
+    * Built-in Environment Variables
     * Context environment variables 
     * Project-level environment variables
     * Environment variables set with the `environment` key for a container
@@ -31,7 +31,14 @@ You can see that the env var is set in a context and in project settings too:
     See: https://app.circleci.com/pipelines/github/rosieyohannan/env-var-test/54/workflows/0272418a-a5d0-4ab6-be9a-00fa2c772a07/jobs/98
 
     On branch: https://github.com/rosieyohannan/env-var-test/blob/env-key-run-step/.circleci/config.yml
+    
+3. Se env var using `environment` key at job level overrides:
 
+    * Built-in Environment Variables
+    * Context environment variables 
+    * Project-level environment variables
+    * Environment variables set with the `environment` key for a container
 
-
-
+    see: https://app.circleci.com/pipelines/github/rosieyohannan/env-var-test/57/workflows/2993776c-0275-48d7-bea6-dd276c86a28b/jobs/101
+    
+    on branch: https://github.com/rosieyohannan/env-var-test/blob/job-env-key/.circleci/config.yml
