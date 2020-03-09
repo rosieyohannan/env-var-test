@@ -13,5 +13,5 @@ See https://app.circleci.com/jobs/github/rosieyohannan/env-var-test/74
 
 On branch: https://github.com/rosieyohannan/env-var-test/tree/shell-cmd
 
-![env var set in project settings]()
-![env var set in context]()
+![env var set in project settings](projectsettings.png)
+![env var set in context](context.png)
