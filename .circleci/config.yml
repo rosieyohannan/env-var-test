@@ -13,8 +13,8 @@ jobs:
       - image: cimg/base:2020.01
         environment:
           CIRCLE_JOB: ContainerEnvKey
-    environment:
-      CIRCLE_JOB: JobEnvKey
+    #environment:
+      #CIRCLE_JOB: JobEnvKey
     steps:
       - checkout
       - run: 
