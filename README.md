@@ -1,8 +1,8 @@
 # Test env var order of precedence
 
-I've made branches showing the various ways to set an environment variable, and which take precedence over each other. I've use the env var CIRCLE_JOB.
+In this repo there are branches showing the various ways to set an environment variable, and which take precedence over each other. For those that override CCI built-in env vars I've used CIRCLE_JOB.
 
-You can see that the env var is set in a context and in project settings too:
+You can see that the env vars is set in a context and in project settings too:
 
 ![env var set in project settings](projectsettings.png)
 ![env var set in context](context.png)
