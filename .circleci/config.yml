@@ -12,7 +12,7 @@ jobs:
     docker:
       - image: cimg/base:2020.01
         environment:
-          CIRCLE_JOB: ContainerEnvKey
+          MY_ENV_VAR: ContainerEnvKey
     environment:
       CIRCLE_JOB: JobEnvKey
     steps:
@@ -20,7 +20,8 @@ jobs:
       - run: 
           name: "override and echo built in environment variables"
           command: |
-            CIRCLE_JOB="StepCommand"
-            echo $CIRCLE_JOB
+            #CIRCLE_JOB="StepCommand"
+            #echo $CIRCLE_JOB
+            echo $MY_ENV_VAR #print an env var that's specified in the context "Testing-Env-Vars" and project settings
           environment:
             CIRCLE_JOB: StepEnvKey
