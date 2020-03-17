@@ -1,26 +1,32 @@
-version: 2.1
+version: 2.1  # use CircleCI 2.1
+
+jobs: # basic units of work in a run
+  build: 
+    docker: # run the steps with Docker
+      # CircleCI node images available at: https://hub.docker.com/r/circleci/node/
+      - image: circleci/node:10.0-browsers
+    steps: # steps that comprise the `build` job
+      - checkout # check out source code to working directory
+      # Run a step to setup an environment variable.
+      - run: 
+          name: "Setup custom environment variables"
+          command: |
+            echo 'export MY_ENV_VAR="FOO"' >> $BASH_ENV # Redirect MY_ENV_VAR into $BASH_ENV
+      # Run a step to print what branch our code base is on.
+      - run: # test what branch we're on.
+          name: "What branch am I on?"
+          command: echo ${CIRCLE_BRANCH}
+      # Run another step, the same as above; note that you can
+      # invoke environment variable without curly braces.
+      # prints: XXXXXXX
+      - run:
+          name: "What branch am I on now?"
+          command: echo $CIRCLE_BRANCH # prints: XXXXXXX
+      - run:
+          name: "What was my custom environment variable?"
+          command: echo ${MY_ENV_VAR}  # prints: XXXXXXX
 
 workflows:
-  test-env-vars:
+  build:
     jobs:
-      - env-var:
-          context: Testing-Env-Vars
-          
-      
-jobs:
-  env-var:
-    docker:
-      - image: cimg/base:2020.01
-        environment:
-          CIRCLE_JOB: ContainerEnvKey
-    environment:
-      CIRCLE_JOB: JobEnvKey
-    steps:
-      - checkout
-      - run: 
-          name: "override and echo built in environment variables"
-          command: |
-            CIRCLE_JOB="StepCommand"
-            echo $CIRCLE_JOB
-          environment:
-            CIRCLE_JOB: StepEnvKey
+      - build
