@@ -18,9 +18,9 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: "override and echo built in environment variables"
+          name: "set and echo"
           command: |
-            CIRCLE_JOB="StepCommand"
-            echo $CIRCLE_JOB
+            BERET="raspberry"
+            echo $BERET
           environment:
             CIRCLE_JOB: StepEnvKey
