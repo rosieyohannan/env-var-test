@@ -1,14 +1,19 @@
 version: 2.1
 
 workflows:
-  test-env-vars:
+  test-env-var-1:
     jobs:
-      - env-var:
+      - env-var-1:
+          context: Testing-Env-Vars
+          
+  test-env-var-2:
+    jobs:
+      - env-var2:
           context: Testing-Env-Vars
           
       
 jobs:
-  env-var:
+  env-var-1:
     docker:
       - image: cimg/base:2020.01
         environment:
@@ -20,7 +25,23 @@ jobs:
       - run: 
           name: "override and echo built in environment variables"
           command: |
-            CIRCLE_JOB="StepCommand"
+            CIRCLE_JOB="Step"
             echo $CIRCLE_JOB
           environment:
             CIRCLE_JOB: StepEnvKey
+  env-var-2:
+      docker:
+        - image: cimg/base:2020.01
+          environment:
+            CIRCLE_JOB: ContainerEnvKey
+      environment:
+        CIRCLE_JOB: JobEnvKey
+      steps:
+        - checkout
+        - run: 
+            name: "override and echo built in environment variables"
+            command: |
+              CIRCLE_JOB="Command"
+              echo $CIRCLE_JOB
+            environment:
+              CIRCLE_JOB: StepEnvKey
