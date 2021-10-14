@@ -1,47 +1,40 @@
 version: 2.1
 
-workflows:
-  test-env-var-1:
-    jobs:
-      - env-var-1:
-          context: Testing-Env-Vars
-          
-  test-env-var-2:
-    jobs:
-      - env-var-2:
-          context: Testing-Env-Vars
-          
-      
-jobs:
-  env-var-1:
-    docker:
-      - image: cimg/base:2020.01
-        environment:
-          CIRCLE_JOB: ContainerEnvKey
-    environment:
-      CIRCLE_JOB: JobEnvKey
-    steps:
-      - checkout
+jobs: # basic units of work in a run
+  build: 
+    docker: # use the Docker executor
+      # CircleCI node images available at: https://hub.docker.com/r/circleci/node/
+      - image: circleci/node:10.0-browsers
+    steps: # steps that comprise the `build` job
+      - checkout # check out source code to working directory
+      # Run a step to setup an environment variable
+      # Redirect MY_ENV_VAR into $BASH_ENV
       - run: 
-          name: "override and echo built in environment variables"
+          name: "Setup custom environment variables"
           command: |
-            CIRCLE_JOB="Step"
-            echo $CIRCLE_JOB
-          environment:
-            CIRCLE_JOB: StepEnvKey
-  env-var-2:
-      docker:
-        - image: cimg/base:2020.01
-          environment:
-            CIRCLE_JOB: ContainerEnvKey
-      environment:
-        CIRCLE_JOB: JobEnvKey
-      steps:
-        - checkout
-        - run: 
-            name: "override and echo built in environment variables"
-            command: |
-              CIRCLE_JOB="Command"
-              echo $CIRCLE_JOB
-            environment:
-              CIRCLE_JOB: StepEnvKey
+            echo 'export MY_ENV_VAR="FOO"' >> $BASH_ENV
+      - run: # print the name of the branch we're on
+          name: "What branch am I on?"
+          command: echo ${CIRCLE_BRANCH}
+      # Run another step, the same as above; note that you can
+      # invoke environment variable without curly braces.
+      - run:
+          name: "What branch am I on now?"
+          command: echo $CIRCLE_BRANCH
+      - run:
+          name: "What was my custom environment variable?"
+          command: echo ${MY_ENV_VAR}
+      - run:
+          name: "Print an env var stored in the Project"
+          command: echo ${PROJECT_ENV_VAR}
+      - run:
+          name: "echo environment variables from org-global context"
+          command: echo $MY_SECRET_ENV_VAR
+
+workflows: # a single workflow with a single job called build
+  build:
+    jobs:
+      - build:
+          context:
+            - MY_SECRET
+
