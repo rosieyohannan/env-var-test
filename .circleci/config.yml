@@ -32,4 +32,6 @@ workflows: # a single workflow with a single job called build
   build:
     jobs:
       - build
+          context:
+              - MY_SECRET
 
