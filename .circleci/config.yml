@@ -27,11 +27,14 @@ jobs: # basic units of work in a run
       - run:
           name: "Print an env var stored in the Project"
           command: echo ${PROJECT_ENV_VAR}
+      - run:
+          name: "echo environment variables from org-global context"
+          command: echo $MY_SECRET_ENV_VAR
 
 workflows: # a single workflow with a single job called build
   build:
     jobs:
       - build
-          context:
-              - MY_SECRET
+        context:
+          - MY_SECRET
 
